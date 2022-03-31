@@ -5,20 +5,23 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
+import com.example.login.databinding.ActivityWelcomeBinding
 
 class WelCome : AppCompatActivity() {
+
+    private lateinit var binding: ActivityWelcomeBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_welcome)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_welcome)
 
-        val signup = findViewById<ImageView>(R.id.imagephone)
-        signup.setOnClickListener {
-            val intent: Intent= Intent(this@WelCome,com.example.login.signup::class.java)
+        binding.imagephone.setOnClickListener {
+            val intent: Intent= Intent(this@WelCome, signup::class.java)
             startActivity(intent)
         }
 
-        val signin = findViewById<TextView>(R.id.textsignin)
-        signin.setOnClickListener {
+        binding.textsignin.setOnClickListener {
             val intent: Intent= Intent(this@WelCome, SignIn::class.java)
             startActivity(intent)
         }
